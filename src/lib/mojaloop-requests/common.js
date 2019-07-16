@@ -57,7 +57,7 @@ const throwOrJson = async (res) => {
     // TODO: will a 503 or 500 with content-length zero generate an error?
     // or a 404 for that matter?!
 
-    if (res.headers['content-length'] === '0' || res.statusCode === 204 || res.status === 204 || res.status === 404 || res.status === 404) {
+    if (res.headers['content-length'] === '0' || res.statusCode === 204 || res.status === 204 || res.statusCode === 404 || res.status === 404) {
         // success but no content, return null
         console.warn(`throwOrJson success but no content, return null: content-length: ${res.headers['content-length']} res.status: ${res.status} res.statusCode: ${res.statusCode}`);
         return null;
