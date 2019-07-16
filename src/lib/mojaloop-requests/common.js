@@ -49,12 +49,17 @@ const buildUrl = (...args) => {
 };
 
 
+// WANRNING. There are two almos identical copies:
+// mojaloop-sdk-standard-components/src/lib/mojaloop-requests/common.js
+// mojaloop-sdk-scheme-adapter/src/lib/model/lib/requests/common.js
+// See difference below
 const throwOrJson = async (res) => {
     // TODO: will a 503 or 500 with content-length zero generate an error?
     // or a 404 for that matter?!
 
-    if (res.headers['content-length'] === '0' || res.status === 204 || res.status === 404) {
+    if (res.headers['content-length'] === '0' || res.statusCode === 204 || res.status === 204 || res.status === 404 || res.status === 404) {
         // success but no content, return null
+        console.warn(`throwOrJson success but no content, return null: content-length: ${res.headers['content-length']} res.status: ${res.status} res.statusCode: ${res.statusCode}`);
         return null;
     }
     if(res.statusCode < 200 || res.statusCode >= 300) {
@@ -64,7 +69,7 @@ const throwOrJson = async (res) => {
         });
     }
 
-    
+    // This is only in this file and not in the common components one
     if(!res.headers['content-type'] || (res.headers['content-type'].match(/^application\/vnd\.interoperability\.[a-z]+\+json$/) === null)) {
         // we should have got a valid mojaloop content-type in the response
         throw new HTTPResponseError({ msg: `Unexpected content-type header: ${res.headers['content-type']}`, res });
