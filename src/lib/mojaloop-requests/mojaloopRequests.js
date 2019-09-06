@@ -117,8 +117,8 @@ class MojaloopRequests {
     /**
      * Executes a PUT /quotes/{ID} request for the specified quote
      */
-    async putQuotes(quoteResponse, destFspId) {
-        return this._put(`quotes/${quoteResponse.quoteId}`, 'quotes', quoteResponse, destFspId);
+    async putQuotes(quoteId, quoteResponse, destFspId) {
+        return this._put(`quotes/${quoteId}`, 'quotes', quoteResponse, destFspId);
     }
 
 
@@ -214,6 +214,7 @@ class MojaloopRequests {
             uri: buildUrl(this.peerEndpoint, url),
             headers: this._buildHeaders('PUT', resourceType, dest),
             body: body,
+            agent: this.agent,
             resolveWithFullResponse: true,
             simple: false
         };
@@ -241,6 +242,7 @@ class MojaloopRequests {
             uri: buildUrl(this.peerEndpoint, url),
             headers: this._buildHeaders('POST', resourceType, dest),
             body: body,
+            agent: this.agent,
             resolveWithFullResponse: true,
             simple: false
         };
