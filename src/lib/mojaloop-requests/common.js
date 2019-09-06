@@ -49,7 +49,7 @@ const buildUrl = (...args) => {
 };
 
 
-// WANRNING. There are two almos identical copies:
+// WANRNING. There are two almost identical copies:
 // mojaloop-sdk-standard-components/src/lib/mojaloop-requests/common.js
 // mojaloop-sdk-scheme-adapter/src/lib/model/lib/requests/common.js
 // See difference below
@@ -59,7 +59,7 @@ const throwOrJson = async (res) => {
 
     if (res.headers['content-length'] === '0' || res.statusCode === 204 || res.status === 204 || res.statusCode === 404 || res.status === 404) {
         // success but no content, return null
-        console.warn(`throwOrJson success but no content, return null: content-length: ${res.headers['content-length']} res.status: ${res.status} res.statusCode: ${res.statusCode}`);
+        // console.warn(`throwOrJson success but no content, return null: content-length: ${res.headers['content-length']} res.status: ${res.status} res.statusCode: ${res.statusCode}`);
         return null;
     }
     if(res.statusCode < 200 || res.statusCode >= 300) {
