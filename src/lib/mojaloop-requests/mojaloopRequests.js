@@ -182,7 +182,6 @@ class MojaloopRequests {
 
         //this is a temporary FIX until we update to the latest version of SDK
         const token = this.token;
-        this.logger.log(`token:: ${token}`);
         if(token) {
             headers['Authorization'] = `Bearer ${token}`;
         }
@@ -191,8 +190,6 @@ class MojaloopRequests {
         if(method.toUpperCase() !== 'PUT') {
             headers['accept'] = `application/vnd.interoperability.${resourceType}+json;version=1.0`;
         }
-
-        this.logger.log(`headers:: ${headers}`);
 
         return headers;
     }
