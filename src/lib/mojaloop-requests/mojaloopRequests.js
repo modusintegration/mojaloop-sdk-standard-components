@@ -57,6 +57,9 @@ class MojaloopRequests {
             signingKey: config.jwsSigningKey
         });
 
+        // temp solution
+        this.token = config.staticToken;
+
         // Switch or peer DFSP endpoint
         this.peerEndpoint = `${this.transportScheme}://${config.peerEndpoint}`;
     }
@@ -174,6 +177,13 @@ class MojaloopRequests {
 
         if(dest) {
             headers['fspiop-destination'] = dest;
+        }
+
+
+        //this is a temporary FIX until we update to the latest version of SDK
+        const token = this.token;
+        if(token) {
+            headers['Authorization'] = `Bearer ${token}`;
         }
 
         // dont add accept header to PUT requests

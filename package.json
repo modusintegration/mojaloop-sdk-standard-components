@@ -1,6 +1,6 @@
 {
   "name": "@modusintegration/mojaloop-sdk-standard-components",
-  "version": "0.0.39-1",
+  "version": "0.0.39-3",
   "description": "FXP fork of mojaloop/mojaloop-sdk-standard-components A set of standard components for connecting to Mojaloop API enabled switches",
   "main": "src/index.js",
   "scripts": {
